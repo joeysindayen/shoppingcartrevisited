@@ -49,11 +49,13 @@ public class ShoppingCartScenariosTest {
 		cart.add(findProduct("ult_large"));
 
 		Collection<ShoppingCartItem> items = cart.items();
-		assertEquals(2, items.size());
 		for (Item item : items) {
 			ShoppingCartItem cartItem = (ShoppingCartItem) item;
 			log.info("{} x {}", cartItem.getQuantity(), cartItem.getProduct().getName());
 		}
+		assertEquals(2, items.size());
+		assertEquals(3, cart.find(findProduct("ult_small")).getQuantity());
+		assertEquals(1, cart.find(findProduct("ult_large")).getQuantity());
 		Money total = cart.total();
 		log.info("Cart total is {} {}", total.getCurrency().getSymbol(AUSTRALIA), total.getAmount());
 		assertEquals(new BigDecimal("94.70"), total.getAmount());
@@ -77,11 +79,13 @@ public class ShoppingCartScenariosTest {
 		cart.add(product);
 
 		Collection<ShoppingCartItem> items = cart.items();
-		assertEquals(2, items.size());
 		for (Item item : items) {
 			ShoppingCartItem cartItem = (ShoppingCartItem) item;
 			log.info("{} x {}", cartItem.getQuantity(), cartItem.getProduct().getName());
 		}
+		assertEquals(2, items.size());
+		assertEquals(2, cart.find(findProduct("ult_small")).getQuantity());
+		assertEquals(4, cart.find(findProduct("ult_large")).getQuantity());
 		Money total = cart.total();
 		log.info("Cart total is {} {}", total.getCurrency().getSymbol(AUSTRALIA), total.getAmount());
 		assertEquals(new BigDecimal("209.40"), total.getAmount());
@@ -101,11 +105,14 @@ public class ShoppingCartScenariosTest {
 		cart.add(product);
 
 		Collection<ShoppingCartItem> items = cart.items();
-		assertEquals(3, items.size());
 		for (Item item : items) {
 			ShoppingCartItem cartItem = (ShoppingCartItem) item;
 			log.info("{} x {}", cartItem.getQuantity(), cartItem.getProduct().getName());
 		}
+		assertEquals(3, items.size());
+		assertEquals(1, cart.find(findProduct("ult_small")).getQuantity());
+		assertEquals(2, cart.find(findProduct("ult_medium")).getQuantity());
+		assertEquals(2, cart.find(findProduct("1gb")).getQuantity());
 		Money total = cart.total();
 		log.info("Cart total is {} {}", total.getCurrency().getSymbol(AUSTRALIA), total.getAmount());
 		assertEquals(new BigDecimal("84.70"), total.getAmount());
@@ -121,11 +128,13 @@ public class ShoppingCartScenariosTest {
 		cart.add(findProduct("1gb"), "I<3AMAYSIM");
 
 		Collection<ShoppingCartItem> items = cart.items();
-		assertEquals(2, items.size());
 		for (Item item : items) {
 			ShoppingCartItem cartItem = (ShoppingCartItem) item;
 			log.info("{} x {}", cartItem.getQuantity(), cartItem.getProduct().getName());
 		}
+		assertEquals(2, items.size());
+		assertEquals(1, cart.find(findProduct("ult_small")).getQuantity());
+		assertEquals(1, cart.find(findProduct("1gb")).getQuantity());
 		Money total = cart.total();
 		log.info("Cart total is {} {}", total.getCurrency().getSymbol(AUSTRALIA), total.getAmount());
 		assertEquals(new BigDecimal("31.32"), total.getAmount());
