@@ -52,7 +52,11 @@ public class ShoppingCart implements Item {
 		this.discount = this.discount.add(discount);
 	}
 
-	public Money itemsTotal() {
+	ShoppingCartItem find(Product product) {
+		return processed.get(product.getCode());
+	}
+
+	Money itemsTotal() {
 		Money total = Money.ZERO;
 		for (ShoppingCartItem item : processed.values()) {
 			total = total.add(item.total());
@@ -87,9 +91,5 @@ public class ShoppingCart implements Item {
 			}
 			pricingRule.apply(this);
 		}
-	}
-
-	ShoppingCartItem find(Product product) {
-		return processed.get(product.getCode());
 	}
 }

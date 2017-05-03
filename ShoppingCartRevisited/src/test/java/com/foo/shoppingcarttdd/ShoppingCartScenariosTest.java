@@ -26,12 +26,12 @@ public class ShoppingCartScenariosTest {
 	@Before
 	public void setUp() throws Exception {
 		addProduct(new Product("ult_small", "Unlimited 1GB", new Money(AUD, new BigDecimal("24.90"))));
-		addProduct(new Product("ult_medium", "Unlimited 2GB", new Money(AUD, new BigDecimal("29.9"))));
+		addProduct(new Product("ult_medium", "Unlimited 2GB", new Money(AUD, new BigDecimal("29.90"))));
 		addProduct(new Product("ult_large", "Unlimited 5GB", new Money(AUD, new BigDecimal("44.90"))));
-		addProduct(new Product("1gb", "1 GB Data-pack", new Money(AUD, new BigDecimal("9.9"))));
+		addProduct(new Product("1gb", "1 GB Data-pack", new Money(AUD, new BigDecimal("9.90"))));
 
 		pricingRules.add(new DealDiscount(findProduct("ult_small"), 3, 2));
-		pricingRules.add(new BulkDiscount(findProduct("ult_large"), 3, new Money(AUD, new BigDecimal("39.9"))));
+		pricingRules.add(new BulkDiscount(findProduct("ult_large"), 3, new Money(AUD, new BigDecimal("39.90"))));
 		pricingRules.add(new FreeBundle(findProduct("ult_medium"), findProduct("1gb")));
 		pricingRules.add(new PromoCodeDiscount("I<3AMAYSIM", new BigDecimal(".1")));
 	}
